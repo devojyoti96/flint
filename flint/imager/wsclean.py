@@ -87,7 +87,9 @@ class WSCleanOptions(BaseOptions):
     as the imaged MS. This is done by setting the wsclean `-name` argument.
     """
 
-    abs_mem: int = 100
+    j: int = 1
+    """CPU threads wsclean should try to limit itself to"""
+    abs_mem: int = 10
     """Memory wsclean should try to limit itself to"""
     local_rms_window: int | None = None
     """Size of the window used to estimate rms noise"""
@@ -103,7 +105,7 @@ class WSCleanOptions(BaseOptions):
     """How deep to clean once initial clean threshold reached"""
     threshold: float | None = None
     """Threshold in Jy to stop cleaning"""
-    channels_out: int = 4
+    channels_out: int = 1
     """Number of output channels"""
     mgain: float = 0.7
     """Major cycle gain"""
@@ -133,7 +135,7 @@ class WSCleanOptions(BaseOptions):
     """Number of w-layers to use if the gridder mode is w-stacking"""
     wgridder_accuracy: float | None = None
     """The accuracy requested of the wgridder (should it be used), compared as the RMS error when compred to a DFT"""
-    join_channels: bool = True
+    join_channels: bool = False
     """Collapse the sub-band images down to an MFS image when peak-finding"""
     squared_channel_joining: bool = False
     """Use with -join-channels to perform peak finding in the sum of squared values over
